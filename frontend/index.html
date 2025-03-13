@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-file-upload"></i>
+        <span>Document Manager</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h1>Upload Documents</h1>
+      
+      <div id="uploadArea">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <h3>Drag & Drop Files Here</h3>
+        <p>or</p>
+        <button class="btn" id="browseBtn">Browse Files</button>
+        <p class="mt-2"><small>Supported formats: PDF, DOCX, XLSX, TXT, and more</small></p>
+        <input type="file" id="fileInput" hidden>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2><i class="fas fa-folder-open"></i> My Documents</h2>
+      
+      <ul id="fileList" class="file-list">
+        <!-- Files will be populated here -->
+      </ul>
+      
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <i class="fas fa-folder-open"></i>
+        <h3>No Documents Yet</h3>
+        <p>Upload your first document to get started</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notificationMessage">File uploaded successfully!</span>
+  </div>
+  
+  <div id="progressOverlay">
+    <div class="progress-card">
+      <h3>Uploading...</h3>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p class="progress-text"><span id="progressText">0%</span> Complete</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
