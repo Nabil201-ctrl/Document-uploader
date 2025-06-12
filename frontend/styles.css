@@ -1,361 +1,499 @@
 :root {
-    --primary: #4361ee;
-    --primary-dark: #3a56d4;
-    --secondary: #4cc9f0;
-    --light: #f8f9fa;
-    --dark: #212529;
-    --success: #2dc653;
-    --danger: #e63946;
-    --gray: #6c757d;
-    --border-radius: 8px;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--dark);
-    background-color: #f0f2f5;
-    padding: 0;
-    margin: 0;
-  }
-  
+  --primary: #4361ee;
+  --primary-dark: #3a56d4;
+  --secondary: #4cc9f0;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --success: #2dc653;
+  --danger: #e63946;
+  --gray: #6c757d;
+  --border-radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: #f0f2f5;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* Adjust for header */
+}
+
+header {
+  background-color: white;
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  margin-right: 0.5rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: var(--transition);
+  width: 100%;
+  max-width: 600px; /* Wider for dashboard */
+}
+
+.card.login-card, .card.register-card {
+  max-width: 400px; /* Narrower for login/register */
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+}
+
+h2 i {
+  margin-right: 0.5rem;
+  color: var(--primary);
+}
+
+#uploadArea {
+  border: 2px dashed #ddd;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 1rem;
+}
+
+#uploadArea:hover {
+  border-color: var(--primary);
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+#uploadArea.dragover {
+  border-color: var(--primary);
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+#uploadArea i {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+#uploadArea p {
+  color: var(--gray);
+}
+
+#uploadArea strong {
+  color: var(--primary);
+}
+
+#fileInput {
+  display: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.file-list {
+  list-style: none;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  transition: var(--transition);
+}
+
+.file-item:last-child {
+  border-bottom: none;
+}
+
+.file-item:hover {
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+.file-icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-right: 1rem;
+}
+
+.file-info {
+  flex-grow: 1;
+}
+
+.file-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.file-size, .file-date {
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
+.file-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.file-actions button, .file-actions a {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.download-btn, .view-btn {
+  color: var(--primary);
+}
+
+.download-btn:hover, .view-btn:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.delete-btn {
+  color: var(--danger);
+}
+
+.delete-btn:hover {
+  background-color: rgba(230, 57, 70, 0.1);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--gray);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: white;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 1000;
+}
+
+.notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification i {
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.notification.success {
+  border-left: 4px solid var(--success);
+}
+
+.notification.success i {
+  color: var(--success);
+}
+
+.notification.error {
+  border-left: 4px solid var(--danger);
+  display: flex;
+  align-items: center;
+}
+
+#progressOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+#progressOverlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.progress-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  width: 300px;
+  text-align: center;
+}
+
+.progress-card h3 {
+  margin-bottom: 1rem;
+}
+
+.progress-bar-container {
+  height: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: var(--gray);
+}
+
+/* Form styles for login/register */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(67, 97, 238, 0.3);
+}
+
+.mt-2 {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.mt-2 a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.mt-2 a:hover {
+  text-decoration: underline;
+}
+
+/* Modal styles for viewing images */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--secondary);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
   }
-  
-  header {
-    background-color: white;
-    box-shadow: var(--shadow);
-    padding: 1rem 0;
-    margin-bottom: 2rem;
-  }
-  
-  .header-content {
-    display: flex;
-    align-items: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo i {
-    margin-right: 0.5rem;
-  }
-  
+
   .card {
-    background-color: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    transition: var(--transition);
+    padding: 1.5rem;
+    max-width: 90%;
   }
-  
-  .card:hover {
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--dark);
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-  }
-  
-  h2 i {
-    margin-right: 0.5rem;
-    color: var(--primary);
-  }
-  
+
   #uploadArea {
-    border: 2px dashed #ddd;
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: var(--transition);
-    margin-bottom: 1rem;
+    padding: 1.5rem;
   }
-  
-  #uploadArea:hover {
-    border-color: var(--primary);
-    background-color: rgba(67, 97, 238, 0.05);
-  }
-  
-  #uploadArea.dragover {
-    border-color: var(--primary);
-    background-color: rgba(67, 97, 238, 0.1);
-  }
-  
-  #uploadArea i {
-    font-size: 3rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-  }
-  
-  #uploadArea p {
-    color: var(--gray);
-  }
-  
-  #uploadArea strong {
-    color: var(--primary);
-  }
-  
-  #fileInput {
-    display: none;
-  }
-  
-  .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: var(--transition);
-    text-align: center;
-  }
-  
-  .btn:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-  }
-  
-  .btn:active {
-    transform: translateY(0);
-  }
-  
-  .btn-secondary {
-    background-color: white;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-  }
-  
-  .btn-secondary:hover {
-    background-color: rgba(67, 97, 238, 0.1);
-  }
-  
-  .file-list {
-    list-style: none;
-  }
-  
-  .file-item {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
-    transition: var(--transition);
-  }
-  
-  .file-item:last-child {
-    border-bottom: none;
-  }
-  
-  .file-item:hover {
-    background-color: rgba(67, 97, 238, 0.05);
-  }
-  
-  .file-icon {
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin-right: 1rem;
-  }
-  
-  .file-info {
-    flex-grow: 1;
-  }
-  
-  .file-name {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-  }
-  
-  .file-size, .file-date {
-    font-size: 0.875rem;
-    color: var(--gray);
-  }
-  
+
   .file-actions {
-    display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
   }
-  
-  .file-actions button {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: var(--transition);
+
+  .header-content {
+    padding: 0 1rem;
   }
-  
-  .download-btn {
-    color: var(--primary);
+
+  .logo {
+    font-size: 1.2rem;
   }
-  
-  .download-btn:hover {
-    background-color: rgba(67, 97, 238, 0.1);
+
+  .logo i {
+    font-size: 1.5rem;
   }
-  
-  .delete-btn {
-    color: var(--danger);
+
+  h1 {
+    font-size: 1.5rem;
   }
-  
-  .delete-btn:hover {
-    background-color: rgba(230, 57, 70, 0.1);
+
+  h2 {
+    font-size: 1.2rem;
   }
-  
-  .empty-state {
-    text-align: center;
-    padding: 2rem;
-    color: var(--gray);
+}
+
+@media (max-width: 480px) {
+  .file-item {
+    flex-wrap: wrap;
   }
-  
-  .empty-state i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  
-  .notification {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    background-color: white;
-    box-shadow: var(--shadow);
-    display: flex;
-    align-items: center;
-    max-width: 300px;
-    transform: translateX(400px);
-    opacity: 0;
-    transition: all 0.5s ease;
-    z-index: 1000;
-  }
-  
-  .notification.show {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  
-  .notification i {
-    margin-right: 0.5rem;
-    font-size: 1.25rem;
-  }
-  
-  .notification.success {
-    border-left: 4px solid var(--success);
-  }
-  
-  .notification.success i {
-    color: var(--success);
-  }
-  
-  .notification.error {
-    border-left: 4px solid var(--danger);
-  }
-  
-  .notification.error i {
-    color: var(--danger);
-  }
-  
-  #progressOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-  
-  #progressOverlay.visible {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .progress-card {
-    background-color: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    padding: 2rem;
-    width: 300px;
-    text-align: center;
-  }
-  
-  .progress-card h3 {
-    margin-bottom: 1rem;
-  }
-  
-  .progress-bar-container {
-    height: 10px;
-    background-color: #eee;
-    border-radius: 5px;
+
+  .file-info {
     margin-bottom: 0.5rem;
-    overflow: hidden;
   }
-  
-  .progress-bar {
-    height: 100%;
-    background-color: var(--primary);
-    width: 0%;
-    transition: width 0.3s ease;
+
+  .file-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
-  
-  .progress-text {
-    font-size: 0.875rem;
-    color: var(--gray);
+
+  .notification {
+    max-width: 90%;
+    right: 0.5rem;
+    top: 0.5rem;
   }
-  
-  @media (max-width: 768px) {
-    .container {
-      padding: 1rem;
-    }
-    
-    .card {
-      padding: 1.5rem;
-    }
-    
-    #uploadArea {
-      padding: 1.5rem;
-    }
-    
-    .file-actions {
-      flex-direction: column;
-    }
-  }
+}

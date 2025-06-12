@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document Manager</title>
+  <title>Image Manager</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,28 +11,29 @@
   <header>
     <div class="header-content">
       <div class="logo">
-        <i class="fas fa-file-upload"></i>
-        <span>Document Manager</span>
+        <i class="fas fa-image"></i>
+        <span>Image Manager</span>
       </div>
+      <button class="btn" id="logoutBtn">Logout</button>
     </div>
   </header>
 
   <div class="container">
     <div class="card">
-      <h1>Upload Documents</h1>
+      <h1>Upload Images</h1>
       
       <div id="uploadArea">
         <i class="fas fa-cloud-upload-alt"></i>
-        <h3>Drag & Drop Files Here</h3>
+        <h3>Drag & Drop Images Here</h3>
         <p>or</p>
-        <button class="btn" id="browseBtn">Browse Files</button>
-        <p class="mt-2"><small>Supported formats: PDF, DOCX, XLSX, TXT, and more</small></p>
-        <input type="file" id="fileInput" hidden>
+        <button class="btn" id="browseBtn">Browse Images</button>
+        <p class="mt-2"><small>Supported formats: JPG, JPEG, PNG, GIF (Max 5MB)</small></p>
+        <input type="file" id="fileInput" accept="image/*" hidden>
       </div>
     </div>
     
     <div class="card">
-      <h2><i class="fas fa-folder-open"></i> My Documents</h2>
+      <h2><i class="fas fa-folder-open"></i> My Images</h2>
       
       <ul id="fileList" class="file-list">
         <!-- Files will be populated here -->
@@ -40,15 +41,15 @@
       
       <div id="emptyState" class="empty-state" style="display: none;">
         <i class="fas fa-folder-open"></i>
-        <h3>No Documents Yet</h3>
-        <p>Upload your first document to get started</p>
+        <h3>No Images Yet</h3>
+        <p>Upload your first image to get started</p>
       </div>
     </div>
   </div>
   
   <div class="notification" id="notification">
     <i class="fas fa-check-circle"></i>
-    <span id="notificationMessage">File uploaded successfully!</span>
+    <span id="notificationMessage">Image uploaded successfully!</span>
   </div>
   
   <div id="progressOverlay">
@@ -59,6 +60,12 @@
       </div>
       <p class="progress-text"><span id="progressText">0%</span> Complete</p>
     </div>
+  </div>
+
+  <!-- Modal for viewing images -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">×</span>
+    <img class="modal-content" id="modalImage">
   </div>
 
   <script src="script.js"></script>
