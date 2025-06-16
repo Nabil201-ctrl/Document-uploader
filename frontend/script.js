@@ -181,7 +181,7 @@ async function uploadFile(file) {
 
   try {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:5000/api/upload", true);
+    xhr.open("POST", "https://document-uploader-tbyl.onrender.com/api/upload", true);
     xhr.setRequestHeader("Authorization", `Bearer ${token}`);
 
     xhr.upload.onprogress = (event) => {
@@ -229,7 +229,7 @@ async function fetchFiles() {
   const token = checkAuth();
   fileList.innerHTML = "<li>Loading...</li>"; // Show loading state
   try {
-    const res = await fetch("http://localhost:5000/api/files", {
+    const res = await fetch("https://document-uploader-tbyl.onrender.com/api/files", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -296,7 +296,7 @@ async function fetchFiles() {
           const filename = e.currentTarget.dataset.filename;
           if (confirm(`Are you sure you want to delete ${filename}?`)) {
             try {
-              const res = await fetch(`http://localhost:5000/api/delete/${filename}`, {
+              const res = await fetch(`https://document-uploader-tbyl.onrender.com/api/delete/${filename}`, {
                 method: "DELETE",
                 headers: {
                   Authorization: `Bearer ${token}`,
